@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload Form</title>
+</head>
+<body>
+    <h1>Image Upload Form</h1>
+    <!-- <form action="#" method="post"  id="imageForm">
+        <input type="file" name="image" accept="image/*" required>
+        <br>
+        <input type="submit" value="Upload Image">
+    </form> -->
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="xray">X-ray Image (Drag and drop here)</label>
+            <div class="image-preview" id="imagePreview">
+              <img src="" alt="Image Preview">
+            </div>
+            <input type="file" class="form-control-file" id="xray" name="image" accept="image/*"
+              onchange="previewImage(event)">
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="imageContainer"></div>
+
+    <script>
+        function toggleForm() {
+
+        var formContainer = document.getElementById("formContainer");
+        var button = document.querySelector("button");
+
+        if (formContainer.style.display === "none") {
+        formContainer.style.display = "block";
+        button.innerText = "Close Form";
+        } else {
+        formContainer.style.display = "none";
+        button.innerText = "Open Form";
+        }
+        }
+
+        function submitForm() {
+        // Add your code here to handle form submission
+        // alert("Form submitted successfully!");
+        toggleForm();
+        removeTable();
+        // Hide the form after submission
+        }
+
+        function previewImage(event) {
+        var reader = new FileReader();
+        var imagePreview = document.getElementById("imagePreview");
+        var image = imagePreview.querySelector("img");
+
+        reader.onload = function () {
+        image.src = reader.result;
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+
+</body>
+</html>
