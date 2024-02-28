@@ -1,15 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Upload Form</title>
+    <title>Cifar - 10</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #imagePreview {
+            width: 30%;
+            max-height: 30%;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #imageContainer {
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Image Upload Form</h1>
-    <!-- <form action="#" method="post"  id="imageForm">
-        <input type="file" name="image" accept="image/*" required>
-        <br>
-        <input type="submit" value="Upload Image">
-    </form> -->
+
+    <header>
+        <h1>Welcome to Cifar-10</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
 
     <form id="formContainer" action="/upload" method="POST" enctype="multipart/form-data">
         <div class="form-group">
