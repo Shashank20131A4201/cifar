@@ -93,9 +93,9 @@
 
     <form id="formContainer" action="/upload" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="xray">X-ray Image (Drag and drop here)</label>
+            <label for="xray">Cifar Image (Drag and drop here)</label>
             <div class="image-preview" id="imagePreview">
-              <img src="" alt="Image Preview">
+              <!-- <img src="" alt="Image Preview"> -->
             </div>
             <input type="file" class="form-control-file" id="xray" name="image" accept="image/*"
               onchange="previewImage(event)">
@@ -103,7 +103,17 @@
           <button type="submit" class="btn btn-primary" onclick="submitForm()">Submit</button>
     </form>
 
-    <div id="imageContainer"></div>
+    <div id="imageContainer">
+        {% if message %}
+            <h2>{{ message }}</h2>
+        {% endif %}
+        {% if Pred %}
+            <p>Prediction: It's a {{ Pred }}</p>
+        {% endif %}
+        {% if error %}
+            <p> {{ error }}</p>
+        {% endif %}
+    </div>
 
     <script>
         function toggleForm() {
