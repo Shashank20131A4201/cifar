@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI, UploadFile, File, Request,Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse,JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 import io
@@ -37,12 +37,54 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 def read_root(request: Request):
-    # with open("templates/index.html", 'r') as file:
-    #     content = file.read()
-    # return HTMLResponse(content=content)
+    return templates.TemplateResponse("base.html", {"request": request})
 
+@app.get("/sign")
+def signup(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
+@app.post("/sign")
+async def signup(
+    request: Request, username: str = Form(...), email: str = Form(...),password1: str = Form(...),password2:str = Form(...) 
+):
+   
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users(Username,Email,Password_) VALUES (%s, %s,%s)", (username,email,password1))
+    conn.commit()
+    cur.close() 
+ 
+    return RedirectResponse("/login", status_code=303)
+
+@app.get("/login")
+def login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.post("/login")
+async def do_login(
+    request: Request,
+    username: str = Form(...),
+    password: str = Form(...),
+):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE Username=%s and Password_=%s", (username,password))
+    existing_user = cur.fetchone()
+    cur.close()
+    
+    if existing_user:
+        print(existing_user)
+        return RedirectResponse("/upload", status_code=303)
+    
+    else:
+        return JSONResponse(status_code=401, content={"message": "Wrong credentials"})
+
+   
+# @app.get("/home")
+# def homepage(request: Request):
+#     return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/upload")
+def index_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
 
 @app.post("/upload")
 async def upload_image(request: Request,image: UploadFile):
