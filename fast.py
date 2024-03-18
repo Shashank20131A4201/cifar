@@ -3,12 +3,27 @@ from fastapi import FastAPI, UploadFile, File, Request,Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
 import io
 from PIL import Image
 import os
-import cv2
 import shutil
+import psycopg2
+from fastapi.responses import RedirectResponse
+from dotenv import load_dotenv
 from process import process_and_return
+
+
+load_dotenv('.env')
+
+conn = psycopg2.connect(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD"),
+    host="postgres",
+    port=os.getenv("DATABASE_PORT")
+)
 
 
 app = FastAPI()
