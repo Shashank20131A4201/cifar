@@ -37,7 +37,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 def read_root(request: Request):
-    return templates.TemplateResponse("base.html", {"request": request})
+    return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/sign")
 def signup(request: Request):

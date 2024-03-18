@@ -1,4 +1,4 @@
-<form action="" method="post">
+<!-- <form action="" method="post">
         
     <h3>Signup Here</h3>
 
@@ -18,4 +18,145 @@
     
     <a  href="/login">I already have an account</a>
 
-</form>
+</form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #666;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        /* .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        } */
+        
+        /* label {
+            display: block;
+            margin-bottom: 5px;
+        } */
+        /* input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        } */
+        /* button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        } */
+
+        .container1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            
+        }
+        .signup-box {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        .signup-box h2 {
+            margin-top: 0;
+            text-align: center;
+            
+        }
+        .signup-box input[type="text"],
+        .signup-box input[type="password"],
+        .signup-box input[type="submit"],
+        .signup-box input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .signup-box input[type="submit"] {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Cifar-10 </h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="container1">
+        <div class="signup-box">
+            <h2>Signup Here</h2>
+            <form action="" method="post">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Username" name="username" id="username" required>
+
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email or Phone" name="email" id="email" >
+
+                <label for="password1">Password</label>
+                <input type="password" placeholder="Password" id="password1" name="password1">
+
+                <label for="password2">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+
+                <button type="submit">Signup</button>
+            </form>
+            <br>
+            <a href="/login">I already have an account</a>
+        </div>
+    </div>
+
+</body>
+</html>
